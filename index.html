@@ -2,145 +2,236 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="Work Journal">
-<meta name="theme-color" content="#ffffff" id="theme-meta">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme:light)">
+<meta name="theme-color" content="#111110" media="(prefers-color-scheme:dark)">
 <link rel="manifest" href="/manifest.json">
 <title>Work Journal</title>
 <style>
-:root{--bg:#fff;--bg2:#f7f7f5;--bg3:#eeecea;--text:#111110;--text2:#6b6b68;--text3:#a8a8a4;--bd:#e5e3de;--bd2:#d0cec8;--blue-bg:#eef4ff;--blue:#3b5bdb;--blue-bd:#c5d3f7;--green-bg:#edfcf2;--green:#2f9e44;--green-bd:#b2f0c3;--amber-bg:#fff8e1;--amber:#e67700;--amber-bd:#fde68a;--red-bg:#fff0f0;--red:#e03131;--red-bd:#fcc2c2;--purple-bg:#f3f0ff;--purple:#6741d9;--purple-bd:#d0bfff;--gray-bg:#f4f4f2;--gray:#6b6b68;--gray-bd:#dddbd6;--r:12px;--rs:8px;}
-@media(prefers-color-scheme:dark){:root{--bg:#111110;--bg2:#1a1a18;--bg3:#242420;--text:#f5f5f0;--text2:#a8a8a4;--text3:#6b6b68;--bd:#2a2a26;--bd2:#3a3a36;--blue-bg:#1a2044;--blue:#8ca9f5;--blue-bd:#2a3a6a;--green-bg:#0f2a18;--green:#69db7c;--green-bd:#1a4428;--amber-bg:#2a1f00;--amber:#fcc419;--amber-bd:#4a3800;--red-bg:#2a0f0f;--red:#f87171;--red-bd:#4a1a1a;--purple-bg:#1e1640;--purple:#b197fc;--purple-bd:#322660;--gray-bg:#1e1e1c;--gray:#a8a8a4;--gray-bd:#2e2e2a;}}
+:root{
+  --bg:#fff;--bg2:#f7f7f5;--bg3:#eeecea;--bg4:#e5e3de;
+  --text:#111110;--text2:#6b6b68;--text3:#a8a8a4;
+  --bd:#e5e3de;--bd2:#d0cec8;
+  --blue:#3b5bdb;--blue-bg:#eef4ff;--blue-bd:#c5d3f7;
+  --green:#2f9e44;--green-bg:#edfcf2;--green-bd:#b2f0c3;
+  --amber:#e67700;--amber-bg:#fff8e1;--amber-bd:#fde68a;
+  --red:#e03131;--red-bg:#fff0f0;--red-bd:#fcc2c2;
+  --purple:#6741d9;--purple-bg:#f3f0ff;--purple-bd:#d0bfff;
+  --teal:#0c8599;--teal-bg:#e6fff9;--teal-bd:#99e9f2;
+  --pink:#c2255c;--pink-bg:#fff0f6;--pink-bd:#fcc2d7;
+  --gray:#6b6b68;--gray-bg:#f4f4f2;--gray-bd:#dddbd6;
+  --r:12px;--rs:8px;
+}
+@media(prefers-color-scheme:dark){:root{
+  --bg:#111110;--bg2:#1a1a18;--bg3:#242420;--bg4:#2e2e2a;
+  --text:#f5f5f0;--text2:#a8a8a4;--text3:#6b6b68;
+  --bd:#2a2a26;--bd2:#3a3a36;
+  --blue:#8ca9f5;--blue-bg:#1a2044;--blue-bd:#2a3a6a;
+  --green:#69db7c;--green-bg:#0f2a18;--green-bd:#1a4428;
+  --amber:#fcc419;--amber-bg:#2a1f00;--amber-bd:#4a3800;
+  --red:#f87171;--red-bg:#2a0f0f;--red-bd:#4a1a1a;
+  --purple:#b197fc;--purple-bg:#1e1640;--purple-bd:#322660;
+  --teal:#3bc9db;--teal-bg:#0a2a30;--teal-bd:#1a4a54;
+  --pink:#f783ac;--pink-bg:#2a0f1e;--pink-bd:#4a1a30;
+  --gray:#a8a8a4;--gray-bg:#1e1e1c;--gray-bd:#2e2e2a;
+}}
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
 html,body{height:100%;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text',system-ui,sans-serif;}
 #app{max-width:540px;margin:0 auto;min-height:100vh;display:flex;flex-direction:column;}
 
-/* Header */
-header{padding:20px 20px 0;position:sticky;top:0;background:var(--bg);z-index:10;border-bottom:1px solid transparent;transition:border-color .2s;}
+/* ── Header ── */
+header{padding:16px 16px 0;position:sticky;top:0;background:var(--bg);z-index:30;border-bottom:1px solid transparent;transition:border-color .2s;}
 header.scrolled{border-bottom-color:var(--bd);}
-.hrow{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;}
-.app-title{font-size:20px;font-weight:600;letter-spacing:-.02em;}
-.ecount{font-size:12px;color:var(--text3);margin-top:1px;}
-.clrbtn{font-size:12px;color:var(--text3);background:none;border:none;cursor:pointer;padding:4px 0;font-family:inherit;}
+.hrow{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px;}
+.app-title{font-size:19px;font-weight:600;letter-spacing:-.02em;}
+.ecount{font-size:11px;color:var(--text3);margin-top:2px;}
+.clrbtn{font-size:12px;color:var(--text3);background:none;border:none;cursor:pointer;padding:4px 0;font-family:inherit;flex-shrink:0;margin-top:2px;}
 .clrbtn.warn{color:var(--red);}
 
-/* Tabs */
-.tabs{display:flex;background:var(--bg2);border-radius:var(--rs);padding:3px;margin-bottom:16px;}
+/* ── Day filter ── */
+.dayfilt{display:flex;gap:5px;padding:0 0 12px;overflow-x:auto;-ms-overflow-style:none;scrollbar-width:none;}
+.dayfilt::-webkit-scrollbar{display:none;}
+.dchip{flex-shrink:0;padding:5px 12px;border-radius:20px;font-size:12px;font-weight:500;border:1px solid var(--bd2);background:transparent;color:var(--text2);cursor:pointer;font-family:inherit;transition:all .15s;position:relative;}
+.dchip.active{background:var(--blue-bg);border-color:var(--blue-bd);color:var(--blue);}
+.dchip.today-line::after{content:'';position:absolute;bottom:-1px;left:50%;transform:translateX(-50%);width:4px;height:2px;background:var(--text3);border-radius:1px;}
+.dchip .dc{display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--blue);margin-left:4px;vertical-align:middle;opacity:.7;}
+
+/* ── Tabs ── */
+.tabs{display:flex;background:var(--bg2);border-radius:var(--rs);padding:3px;margin-bottom:0;}
 .tab{flex:1;text-align:center;padding:7px 0;font-size:13px;font-weight:500;border-radius:6px;border:none;background:none;color:var(--text2);cursor:pointer;font-family:inherit;transition:all .15s;}
 .tab.active{background:var(--bg);color:var(--text);box-shadow:0 1px 3px rgba(0,0,0,.08);}
-main{flex:1;padding:20px;overflow-x:hidden;}
 
-/* Input */
-.icard{background:var(--bg2);border-radius:var(--r);padding:14px;margin-bottom:20px;}
-.chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px;}
-.chip{padding:4px 10px;border-radius:20px;font-size:12px;font-weight:500;border:1px solid;cursor:pointer;user-select:none;font-family:inherit;background:transparent;transition:all .12s;}
-.chip:active{transform:scale(.95);}
-.irow{display:flex;gap:8px;align-items:center;}
-.einp{flex:1;padding:10px 12px;font-size:15px;border:1px solid var(--bd2);border-radius:var(--rs);background:var(--bg);color:var(--text);font-family:inherit;outline:none;transition:border-color .15s;min-width:0;}
-.einp:focus{border-color:var(--blue);}
-.einp::placeholder{color:var(--text3);}
-.mic{width:42px;height:42px;border-radius:50%;border:1.5px solid var(--bd2);cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;background:var(--bg);font-size:18px;transition:all .15s;}
-.mic:active{transform:scale(.92);}
-.mic.on{border-color:var(--red-bd);background:var(--red-bg);animation:pulse 1.2s ease infinite;}
-@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(224,49,49,.35);}70%{box-shadow:0 0 0 10px rgba(224,49,49,0);}100%{box-shadow:0 0 0 0 rgba(224,49,49,0);}}
-.addbtn{padding:10px 16px;font-size:14px;font-weight:600;border-radius:var(--rs);border:none;background:var(--text);color:var(--bg);cursor:pointer;white-space:nowrap;font-family:inherit;}
-.addbtn:active{opacity:.7;}
-#vhint{display:none;align-items:center;gap:8px;margin-top:10px;padding:8px 12px;background:var(--red-bg);border:1px solid var(--red-bd);border-radius:var(--rs);font-size:12px;color:var(--red);}
-#vhint.show{display:flex;}
-.bars{display:flex;align-items:center;gap:2px;height:16px;flex-shrink:0;}
-.bars span{width:3px;background:var(--red);border-radius:3px;animation:bb .6s ease infinite;}
-.bars span:nth-child(1){height:6px;}.bars span:nth-child(2){animation-delay:.1s;height:12px;}.bars span:nth-child(3){animation-delay:.2s;height:8px;}.bars span:nth-child(4){animation-delay:.05s;height:14px;}.bars span:nth-child(5){animation-delay:.15s;height:5px;}
-@keyframes bb{0%,100%{transform:scaleY(1);}50%{transform:scaleY(1.8);}}
-#novox{font-size:11px;color:var(--text3);margin-top:8px;text-align:center;display:none;}
+/* ── Main ── */
+main{flex:1;padding:16px;}
+#vlog{padding-bottom:180px;}
 
-/* Entries */
-.dsect{margin-bottom:20px;}
-.dlbl{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text3);margin-bottom:8px;}
-.eitem{display:flex;align-items:center;gap:10px;padding:10px 12px;background:var(--bg);border:1px solid var(--bd);border-radius:var(--rs);margin-bottom:5px;animation:si .18s ease;}
-@keyframes si{from{opacity:0;transform:translateY(-4px);}to{opacity:1;transform:translateY(0);}}
+/* ── Entries ── */
+.day-header{font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text3);margin-bottom:8px;margin-top:4px;}
+.eitem{display:flex;align-items:center;gap:10px;padding:10px 12px;background:var(--bg);border:1px solid var(--bd);border-radius:var(--rs);margin-bottom:6px;animation:si .16s ease;}
+@keyframes si{from{opacity:0;transform:translateY(-3px);}to{opacity:1;transform:translateY(0);}}
 .cpill{font-size:10px;font-weight:600;padding:2px 7px;border-radius:10px;flex-shrink:0;white-space:nowrap;}
-.etxt{flex:1;font-size:14px;line-height:1.4;}
+.etxt{flex:1;font-size:14px;line-height:1.45;color:var(--text);}
 .delbtn{background:none;border:none;color:var(--text3);cursor:pointer;font-size:18px;padding:0 2px;line-height:1;flex-shrink:0;}
 .delbtn:active{color:var(--red);}
-.empty{text-align:center;padding:48px 24px;}
+.empty{text-align:center;padding:52px 24px;}
 .empty-icon{font-size:36px;margin-bottom:12px;}
 .empty-t{font-size:16px;font-weight:500;color:var(--text2);margin-bottom:6px;}
 .empty-s{font-size:13px;color:var(--text3);line-height:1.6;}
-.genbtn{width:100%;margin-top:8px;padding:13px;font-size:15px;font-weight:600;border-radius:var(--r);border:none;background:var(--text);color:var(--bg);cursor:pointer;font-family:inherit;letter-spacing:-.01em;}
+.genbtn{width:100%;margin-top:4px;padding:13px;font-size:15px;font-weight:600;border-radius:var(--r);border:none;background:var(--text);color:var(--bg);cursor:pointer;font-family:inherit;letter-spacing:-.01em;}
 .genbtn:active{opacity:.75;}
 
-/* Report */
-.rcard{background:var(--bg2);border-radius:var(--r);padding:16px;margin-bottom:14px;}
-.rlbl{font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text3);margin-bottom:12px;}
-#rta{width:100%;min-height:340px;font-size:14px;line-height:1.75;color:var(--text);background:transparent;border:none;outline:none;resize:vertical;font-family:inherit;}
+/* ── Compose bar (fixed bottom) ── */
+.compose{
+  position:fixed;bottom:0;left:0;right:0;
+  max-width:540px;margin:0 auto;
+  background:var(--bg);border-top:1px solid var(--bd);
+  z-index:20;
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  will-change:transform;-webkit-transform:translate3d(0,0,0);transform:translate3d(0,0,0);
+}
+.compose-cats{
+  display:flex;gap:5px;padding:8px 14px 0;
+  overflow-x:auto;-ms-overflow-style:none;scrollbar-width:none;
+}
+.compose-cats::-webkit-scrollbar{display:none;}
+.ccat{flex-shrink:0;padding:3px 9px;border-radius:20px;font-size:11px;font-weight:600;border:1px solid;cursor:pointer;font-family:inherit;background:transparent;transition:all .12s;}
+.ccat:active{transform:scale(.95);}
+.compose-main{display:flex;gap:10px;align-items:flex-end;padding:8px 14px 10px;}
+#inp{
+  flex:1;resize:none;overflow:hidden;
+  min-height:42px;max-height:140px;
+  padding:10px 12px;font-size:15px;line-height:1.4;
+  border:1px solid var(--bd2);border-radius:20px;
+  background:var(--bg2);color:var(--text);
+  font-family:inherit;outline:none;
+  transition:border-color .15s, height .1s;
+}
+#inp:focus{border-color:var(--blue-bd);}
+#inp::placeholder{color:var(--text3);}
+
+/* ── FAB ── */
+.fab{
+  width:52px;height:52px;min-height:52px;border-radius:50%;
+  border:none;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;font-size:20px;
+  transition:all .18s cubic-bezier(.34,1.56,.64,1);
+}
+.fab:active{transform:scale(.9)!important;}
+.fab.f-mic{background:var(--bg3);color:var(--text);border:1.5px solid var(--bd2);}
+.fab.f-send{background:var(--blue);color:#fff;font-size:17px;box-shadow:0 2px 8px rgba(59,91,219,.35);}
+.fab.f-rec{background:var(--red);color:#fff;font-size:17px;animation:pulse 1.2s ease infinite;}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(224,49,49,.4);}70%{box-shadow:0 0 0 10px rgba(224,49,49,0);}100%{box-shadow:0 0 0 0 rgba(224,49,49,0);}}
+
+/* Voice hint */
+#vhint{display:none;align-items:center;gap:7px;padding:6px 14px 0;font-size:12px;color:var(--red);}
+#vhint.show{display:flex;}
+.bars{display:flex;align-items:center;gap:2px;height:14px;}
+.bars span{width:3px;background:var(--red);border-radius:3px;animation:bb .6s ease infinite;}
+.bars span:nth-child(1){height:5px;}.bars span:nth-child(2){animation-delay:.1s;height:10px;}.bars span:nth-child(3){animation-delay:.2s;height:7px;}.bars span:nth-child(4){animation-delay:.05s;height:12px;}.bars span:nth-child(5){animation-delay:.15s;height:4px;}
+@keyframes bb{0%,100%{transform:scaleY(1);}50%{transform:scaleY(1.8);}}
+#novox{font-size:11px;color:var(--text3);padding:5px 14px 0;text-align:center;display:none;}
+
+/* ── Report ── */
+.rcard{background:var(--bg2);border-radius:var(--r);padding:14px;margin-bottom:12px;}
+.rlbl{font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text3);margin-bottom:10px;}
+#rta{width:100%;min-height:300px;font-size:14px;line-height:1.75;color:var(--text);background:transparent;border:none;outline:none;resize:vertical;font-family:inherit;}
 .slrow{display:flex;gap:8px;margin-bottom:10px;}
 .chaninp{flex:1;padding:10px 12px;font-size:13px;border:1px solid var(--bd2);border-radius:var(--rs);background:var(--bg);color:var(--text);font-family:inherit;outline:none;}
-.chaninp:focus{border-color:var(--green);}
+.chaninp:focus{border-color:var(--green-bd);}
 .sendbtn{padding:10px 16px;font-size:13px;font-weight:600;border-radius:var(--rs);border:1px solid var(--green-bd);background:var(--green-bg);color:var(--green);cursor:pointer;font-family:inherit;white-space:nowrap;}
 .sendbtn:disabled{opacity:.5;cursor:wait;}
-.sendbtn:active{opacity:.7;}
 .secrow{display:flex;gap:8px;}
 .secbtn{flex:1;padding:10px;font-size:13px;font-weight:500;border-radius:var(--rs);border:1px solid var(--bd2);background:transparent;color:var(--text2);cursor:pointer;font-family:inherit;text-align:center;}
 .secbtn:active{opacity:.6;}
 .secbtn.ok{background:var(--green-bg);border-color:var(--green-bd);color:var(--green);}
 
-/* Loading */
+/* ── Settings ── */
+.sg{margin-bottom:24px;}
+.sg-t{font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text3);margin-bottom:10px;}
+.srow{display:flex;align-items:flex-start;justify-content:space-between;padding:10px 0;border-bottom:.5px solid var(--bd);}
+.srow:last-child{border-bottom:none;}
+.srow-l{flex:1;}
+.srow-lbl{font-size:14px;color:var(--text);}
+.srow-sub{font-size:11px;color:var(--text3);margin-top:2px;line-height:1.4;}
+.stoggle{width:44px;height:26px;border-radius:13px;background:var(--bd2);position:relative;cursor:pointer;border:none;transition:background .2s;flex-shrink:0;margin-left:12px;margin-top:2px;}
+.stoggle.on{background:var(--green);}
+.stoggle::after{content:'';position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:#fff;transition:transform .2s;box-shadow:0 1px 3px rgba(0,0,0,.2);}
+.stoggle.on::after{transform:translateX(18px);}
+.tone-row{display:flex;gap:6px;}
+.tone-btn{flex:1;padding:8px;font-size:12px;font-weight:500;border-radius:var(--rs);border:1px solid var(--bd2);background:transparent;color:var(--text2);cursor:pointer;font-family:inherit;text-align:center;transition:all .15s;}
+.tone-btn.on{border-color:var(--blue-bd);background:var(--blue-bg);color:var(--blue);}
+.sinp{width:100%;padding:9px 12px;font-size:13px;border:1px solid var(--bd2);border-radius:var(--rs);background:var(--bg);color:var(--text);font-family:inherit;outline:none;margin-top:6px;}
+.sinp:focus{border-color:var(--blue-bd);}
+
+/* Cat management */
+.cat-row{display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:.5px solid var(--bd);}
+.cat-row:last-child{border-bottom:none;}
+.cat-preview{padding:3px 9px;border-radius:10px;font-size:11px;font-weight:600;border:1px solid;white-space:nowrap;}
+.cat-name-disp{flex:1;font-size:13px;color:var(--text);}
+.cat-del{background:none;border:none;color:var(--text3);cursor:pointer;font-size:18px;padding:0 4px;line-height:1;font-family:inherit;}
+.cat-del:active{color:var(--red);}
+.cat-del:disabled{opacity:.3;cursor:default;}
+.add-cat-form{background:var(--bg2);border-radius:var(--rs);padding:12px;margin-top:10px;}
+.add-cat-label{font-size:11px;color:var(--text3);margin-bottom:6px;}
+.color-swatches{display:flex;gap:7px;flex-wrap:wrap;margin:8px 0;}
+.cswatch{width:26px;height:26px;border-radius:50%;cursor:pointer;border:2px solid transparent;transition:transform .12s;}
+.cswatch.sel{border-color:var(--text);transform:scale(1.15);}
+.cswatch:active{transform:scale(.9);}
+.add-cat-row{display:flex;gap:8px;margin-top:8px;}
+.add-cat-inp{flex:1;padding:9px 12px;font-size:13px;border:1px solid var(--bd2);border-radius:var(--rs);background:var(--bg);color:var(--text);font-family:inherit;outline:none;}
+.add-cat-inp:focus{border-color:var(--blue-bd);}
+.add-cat-btn{padding:9px 14px;font-size:13px;font-weight:600;border-radius:var(--rs);border:none;background:var(--text);color:var(--bg);cursor:pointer;font-family:inherit;white-space:nowrap;}
+.add-cat-btn:active{opacity:.7;}
+.reset-cats-btn{font-size:12px;color:var(--text3);background:none;border:none;cursor:pointer;padding:8px 0;font-family:inherit;}
+.reset-cats-btn:active{color:var(--red);}
+
+/* Notif button */
+.notif-btn{width:100%;margin-top:4px;padding:11px;font-size:13px;font-weight:600;border-radius:var(--rs);border:1px solid var(--blue-bd);background:var(--blue-bg);color:var(--blue);cursor:pointer;font-family:inherit;}
+.notif-btn.granted{border-color:var(--green-bd);background:var(--green-bg);color:var(--green);}
+.notif-btn.denied{border-color:var(--red-bd);background:var(--red-bg);color:var(--red);}
+#notif-note{font-size:11px;color:var(--text3);margin-top:6px;line-height:1.5;}
+#ios-install-note{background:var(--amber-bg);border:1px solid var(--amber-bd);border-radius:var(--rs);padding:10px 12px;font-size:12px;color:var(--amber);margin-top:8px;line-height:1.5;display:none;}
+
+/* ── Loading ── */
 .loading{text-align:center;padding:56px 24px;}
 .spin{width:28px;height:28px;border:2.5px solid var(--bd2);border-top-color:var(--blue);border-radius:50%;animation:spin .7s linear infinite;margin:0 auto 16px;}
 @keyframes spin{to{transform:rotate(360deg);}}
-.lt{font-size:15px;font-weight:500;color:var(--text2);margin-bottom:6px;}
+.lt{font-size:15px;font-weight:500;color:var(--text2);margin-bottom:5px;}
 .ls{font-size:12px;color:var(--text3);}
 
-/* Settings */
-.sgroup{margin-bottom:24px;}
-.sgroup-title{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text3);margin-bottom:10px;}
-.srow{display:flex;align-items:center;justify-content:space-between;padding:12px 0;border-bottom:0.5px solid var(--bd);}
-.srow:last-child{border-bottom:none;}
-.srow-label{font-size:14px;color:var(--text);}
-.srow-sub{font-size:11px;color:var(--text3);margin-top:2px;}
-.toggle{width:44px;height:26px;border-radius:13px;background:var(--bd2);position:relative;cursor:pointer;border:none;transition:background .2s;flex-shrink:0;}
-.toggle.on{background:var(--green);}
-.toggle::after{content:'';position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:#fff;transition:transform .2s;box-shadow:0 1px 3px rgba(0,0,0,.2);}
-.toggle.on::after{transform:translateX(18px);}
-.tone-row{display:flex;gap:6px;}
-.tone-btn{flex:1;padding:8px;font-size:12px;font-weight:500;border-radius:var(--rs);border:1px solid var(--bd2);background:transparent;color:var(--text2);cursor:pointer;font-family:inherit;text-align:center;transition:all .15s;}
-.tone-btn.active{border-color:var(--blue-bd);background:var(--blue-bg);color:var(--blue);}
-.sinp{width:100%;padding:10px 12px;font-size:13px;border:1px solid var(--bd2);border-radius:var(--rs);background:var(--bg);color:var(--text);font-family:inherit;outline:none;margin-top:6px;}
-.sinp:focus{border-color:var(--blue);}
-.notif-btn{width:100%;padding:11px;font-size:13px;font-weight:600;border-radius:var(--rs);border:1px solid var(--blue-bd);background:var(--blue-bg);color:var(--blue);cursor:pointer;font-family:inherit;}
-.notif-btn.granted{border-color:var(--green-bd);background:var(--green-bg);color:var(--green);}
-
-/* Toast */
-#toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(60px);background:var(--text);color:var(--bg);padding:10px 18px;border-radius:20px;font-size:13px;font-weight:500;opacity:0;transition:all .22s cubic-bezier(.34,1.56,.64,1);z-index:100;white-space:nowrap;pointer-events:none;}
+/* ── Toast ── */
+#toast{position:fixed;bottom:100px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--text);color:var(--bg);padding:9px 16px;border-radius:20px;font-size:13px;font-weight:500;opacity:0;transition:all .2s cubic-bezier(.34,1.56,.64,1);z-index:100;white-space:nowrap;pointer-events:none;max-width:90vw;text-align:center;}
 #toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
 
-/* Install bar */
-#ibar{background:var(--blue-bg);border-bottom:1px solid var(--blue-bd);padding:10px 20px;display:flex;align-items:center;gap:12px;}
+/* ── Install bar ── */
+#ibar{background:var(--blue-bg);border-bottom:1px solid var(--blue-bd);padding:9px 16px;display:flex;align-items:center;gap:10px;}
 #ibar p{font-size:12px;color:var(--blue);line-height:1.4;flex:1;}
 .ib{font-size:11px;font-weight:600;padding:5px 10px;border-radius:6px;border:1px solid var(--blue-bd);background:var(--blue);color:#fff;cursor:pointer;white-space:nowrap;}
 .id-btn{background:none;border:none;color:var(--blue);font-size:16px;padding:0;cursor:pointer;}
 
-/* Version badge */
-.ver{font-size:10px;color:var(--text3);text-align:center;padding:20px 0 8px;}
+.ver{font-size:10px;color:var(--text3);text-align:center;padding:16px 0 4px;}
 </style>
 </head>
 <body>
 <div id="app">
+
   <div id="ibar" style="display:none">
     <p>Add to Home Screen for app experience + notifications</p>
     <button class="ib" onclick="showHow()">How to</button>
     <button class="id-btn" onclick="dismissBar()">&#10005;</button>
   </div>
+
   <header id="hdr">
     <div class="hrow">
-      <div>
-        <div class="app-title">Work Journal</div>
-        <div class="ecount" id="ecount">0 entries this week</div>
-      </div>
+      <div><div class="app-title">Work Journal</div><div class="ecount" id="ecount">0 entries this week</div></div>
       <button class="clrbtn" id="clrbtn" onclick="clearWeek()">Clear week</button>
     </div>
-    <div class="tabs">
+    <div class="dayfilt" id="dayfilt"></div>
+    <div class="tabs" style="margin-bottom:0;border-bottom:1px solid var(--bd);">
       <button class="tab active" id="tlog" onclick="go('log')">Log</button>
       <button class="tab" id="trep" onclick="go('report')">Report</button>
       <button class="tab" id="tset" onclick="go('settings')">Settings</button>
@@ -149,20 +240,6 @@ main{flex:1;padding:20px;overflow-x:hidden;}
 
   <!-- LOG -->
   <main id="vlog">
-    <div class="icard">
-      <div class="chips" id="dchips"></div>
-      <div class="chips" id="cchips"></div>
-      <div class="irow">
-        <input class="einp" id="inp" type="text" placeholder="What did you work on?" maxlength="300"/>
-        <button class="mic" id="mic" onclick="toggleMic()">&#127897;&#65039;</button>
-        <button class="addbtn" onclick="addEntry()">Add</button>
-      </div>
-      <div id="vhint">
-        <div class="bars"><span></span><span></span><span></span><span></span><span></span></div>
-        <span>Listening&#8230; tap mic again to stop</span>
-      </div>
-      <div id="novox">Voice not supported &#8212; try Chrome or Safari on Android, or Safari on iOS.</div>
-    </div>
     <div id="elist"></div>
     <button class="genbtn" id="genbtn" onclick="doGen()" style="display:none">Generate weekly report &#8594;</button>
   </main>
@@ -192,292 +269,446 @@ main{flex:1;padding:20px;overflow-x:hidden;}
       <div class="empty-icon">&#128203;</div>
       <div class="empty-t">No report yet</div>
       <div class="empty-s">Log your week first,<br>then hit generate.</div>
-      <br>
-      <button class="secbtn" onclick="go('log')" style="display:inline-block;width:auto;padding:10px 20px;">&#8592; Back to Log</button>
+      <br><button class="secbtn" onclick="go('log')" style="display:inline-block;width:auto;padding:10px 20px;">&#8592; Back to Log</button>
     </div>
   </main>
 
   <!-- SETTINGS -->
   <main id="vset" style="display:none">
 
-    <div class="sgroup">
-      <div class="sgroup-title">Report sections</div>
-      <div id="section-toggles"></div>
+    <div class="sg">
+      <div class="sg-t">Report sections</div>
+      <div id="sec-toggles"></div>
     </div>
 
-    <div class="sgroup">
-      <div class="sgroup-title">Tone</div>
+    <div class="sg">
+      <div class="sg-t">Tone</div>
       <div class="tone-row" id="tone-row"></div>
     </div>
 
-    <div class="sgroup">
-      <div class="sgroup-title">Custom intro (optional)</div>
-      <input class="sinp" id="custom-intro" type="text" placeholder="e.g. Solid week across design and collaboration." maxlength="160"/>
+    <div class="sg">
+      <div class="sg-t">Custom opening line</div>
+      <input class="sinp" id="s-intro" type="text" placeholder="e.g. Solid week across design and collab." maxlength="160"/>
     </div>
 
-    <div class="sgroup">
-      <div class="sgroup-title">Notifications</div>
-      <div class="srow">
-        <div><div class="srow-label">Daily reminders</div><div class="srow-sub">12:00 PM and 4:45 PM in your timezone</div></div>
-        <button class="notif-btn" id="notif-btn" onclick="requestNotifs()">Enable reminders</button>
+    <div class="sg">
+      <div class="sg-t">Categories</div>
+      <div id="cats-list"></div>
+      <div class="add-cat-form">
+        <div class="add-cat-label">Add a category</div>
+        <div class="color-swatches" id="color-swatches"></div>
+        <div class="add-cat-row">
+          <input class="add-cat-inp" id="new-cat-inp" type="text" placeholder="Category name" maxlength="20"/>
+          <button class="add-cat-btn" onclick="addCat()">Add</button>
+        </div>
       </div>
-      <div id="notif-status" style="font-size:11px;color:var(--text3);margin-top:8px;"></div>
+      <br>
+      <button class="reset-cats-btn" onclick="resetCats()">Reset to defaults</button>
     </div>
 
-    <div class="sgroup">
-      <div class="sgroup-title">Slack channel</div>
-      <input class="sinp" id="chan-set" type="text" placeholder="#design-updates" oninput="saveChanSetting()"/>
+    <div class="sg">
+      <div class="sg-t">Slack channel</div>
+      <input class="sinp" id="s-chan" type="text" placeholder="#design-updates" oninput="saveSChan()"/>
     </div>
 
-    <div class="ver" id="ver-badge">Work Journal v2.0 &#8212; <span id="tz-display"></span></div>
+    <div class="sg">
+      <div class="sg-t">Daily reminders</div>
+      <div class="srow" style="border:none;padding-bottom:0;">
+        <div class="srow-l">
+          <div class="srow-lbl">12:00 PM and 4:45 PM</div>
+          <div class="srow-sub">In your local timezone &#8212; <span id="tz-lbl"></span></div>
+        </div>
+      </div>
+      <button class="notif-btn" id="notif-btn" onclick="requestNotifs()">Enable reminders</button>
+      <div id="notif-note"></div>
+      <div id="ios-install-note">
+        &#128241; On iPhone, notifications only work when the app is <strong>installed via Safari</strong>.<br>
+        Tap the Share icon &#8594; Add to Home Screen &#8594; then come back and enable reminders.
+      </div>
+    </div>
+
+    <div class="ver">Work Journal v3 &nbsp;&#183;&nbsp; Data stored on your device only</div>
   </main>
+
+  <!-- COMPOSE (fixed bottom, only in log view) -->
+  <div class="compose" id="compose">
+    <div id="vhint">
+      <div class="bars"><span></span><span></span><span></span><span></span><span></span></div>
+      <span>Listening&#8230; tap &#9209; to stop</span>
+    </div>
+    <div id="novox"></div>
+    <div class="compose-cats" id="cchips"></div>
+    <div class="compose-main">
+      <textarea id="inp" rows="1" placeholder="What did you work on today?&#10;Or tap the mic to record&#8230;"></textarea>
+      <button class="fab f-mic" id="fab" onclick="fabAction()">&#127897;</button>
+    </div>
+  </div>
+
 </div>
 <div id="toast"></div>
 
 <script>
-// ────────── Constants ──────────────────────────────────────────────
+// ── Constants ──────────────────────────────────────────────────────
 const DAYS = ['Monday','Tuesday','Wednesday','Thursday','Friday'];
-const CATS = [
-  {n:'Design',   bg:'var(--blue-bg)',   fg:'var(--blue)',   bd:'var(--blue-bd)'  },
-  {n:'Collab',   bg:'var(--green-bg)',  fg:'var(--green)',  bd:'var(--green-bd)' },
-  {n:'Review',   bg:'var(--amber-bg)',  fg:'var(--amber)',  bd:'var(--amber-bd)' },
-  {n:'Research', bg:'var(--purple-bg)', fg:'var(--purple)', bd:'var(--purple-bd)'},
-  {n:'Blocked',  bg:'var(--red-bg)',    fg:'var(--red)',    bd:'var(--red-bd)'   },
-  {n:'Admin',    bg:'var(--gray-bg)',   fg:'var(--gray)',   bd:'var(--gray-bd)'  },
+
+const COLOR_PRESETS = [
+  {id:'blue',   bg:'var(--blue-bg)',   fg:'var(--blue)',   bd:'var(--blue-bd)',   dot:'#3b5bdb'},
+  {id:'green',  bg:'var(--green-bg)',  fg:'var(--green)',  bd:'var(--green-bd)',  dot:'#2f9e44'},
+  {id:'amber',  bg:'var(--amber-bg)',  fg:'var(--amber)',  bd:'var(--amber-bd)',  dot:'#e67700'},
+  {id:'purple', bg:'var(--purple-bg)', fg:'var(--purple)', bd:'var(--purple-bd)', dot:'#6741d9'},
+  {id:'red',    bg:'var(--red-bg)',    fg:'var(--red)',    bd:'var(--red-bd)',    dot:'#e03131'},
+  {id:'teal',   bg:'var(--teal-bg)',   fg:'var(--teal)',   bd:'var(--teal-bd)',   dot:'#0c8599'},
+  {id:'pink',   bg:'var(--pink-bg)',   fg:'var(--pink)',   bd:'var(--pink-bd)',   dot:'#c2255c'},
+  {id:'gray',   bg:'var(--gray-bg)',   fg:'var(--gray)',   bd:'var(--gray-bd)',   dot:'#6b6b68'},
 ];
+
+const DEFAULT_CATS = [
+  {n:'Design',   colorId:'blue'},
+  {n:'Collab',   colorId:'green'},
+  {n:'Review',   colorId:'amber'},
+  {n:'Research', colorId:'purple'},
+  {n:'Blocked',  colorId:'red'},
+  {n:'Admin',    colorId:'gray'},
+];
+
 const ALL_SECTIONS = [
-  {id:'design',   label:'Design Progress',          emoji:'🎨', desc:'Your main design work this week'},
-  {id:'collab',   label:'Collaboration',             emoji:'🤝', desc:'Stakeholder and team touchpoints'},
-  {id:'reviews',  label:'Reviews & Feedback',        emoji:'🔍', desc:'What you reviewed or got feedback on'},
-  {id:'blockers', label:'Blockers & Needs',          emoji:'⚠️', desc:'What is slowing you down'},
-  {id:'next',     label:'Next Week Priorities',      emoji:'➡️', desc:'What you plan to focus on'},
+  {id:'design',   label:'Design Progress',      emoji:'🎨'},
+  {id:'collab',   label:'Collaboration',         emoji:'🤝'},
+  {id:'reviews',  label:'Reviews & Feedback',    emoji:'🔍'},
+  {id:'blockers', label:'Blockers & Needs',       emoji:'⚠️'},
+  {id:'next',     label:'Next Week Priorities',  emoji:'➡️'},
 ];
+
 const TONES = ['Formal','Balanced','Casual'];
 
-// ────────── State ──────────────────────────────────────────────────
-let entries     = JSON.parse(ls('wj-v1')     || '[]');
-let channel     = ls('wj-chan')               || '#design-updates';
-let saved       = ls('wj-rep')               || '';
-let settings    = JSON.parse(ls('wj-cfg')    || 'null') || defaultSettings();
+// ── State ──────────────────────────────────────────────────────────
+let entries     = JSON.parse(ls('wj-entries-v3') || '[]');
+let settings    = JSON.parse(ls('wj-cfg-v3')     || 'null') || defSettings();
+let channel     = ls('wj-chan') || '#design-updates';
+let savedReport = ls('wj-rep')  || '';
 let selDay      = todayDay();
-let selCat      = 'Design';
-let cs = 0, ct = null;
-let recog = null, isOn = false;
-let sw = null;
+let selCat      = '';          // set in init
+let newCatColor = 'blue';      // selected swatch in add-cat form
+let clearStep   = 0, clearTimer = null;
 
-function defaultSettings() {
-  return {
-    sections: {design:true, collab:true, reviews:true, blockers:true, next:true},
-    tone: 'Balanced',
-    intro: '',
-  };
-}
-function ls(k){ return localStorage.getItem(k); }
-function lss(k,v){ localStorage.setItem(k,v); }
-function save(){ lss('wj-v1', JSON.stringify(entries)); }
-function saveCfg(){ lss('wj-cfg', JSON.stringify(settings)); }
-function esc(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
-function todayDay(){ return {1:'Monday',2:'Tuesday',3:'Wednesday',4:'Thursday',5:'Friday'}[new Date().getDay()]||'Monday'; }
+// Voice state
+let voiceText   = '';          // transcript stored between callbacks
+let isRecording = false;
+let recog       = null;
 
-function toast(m, dur=2400){
-  const t=document.getElementById('toast');
-  t.textContent=m; t.classList.add('show');
+// ── Utilities ──────────────────────────────────────────────────────
+function ls(k)    { return localStorage.getItem(k); }
+function lss(k,v) { localStorage.setItem(k,v); }
+function esc(s)   { return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+function todayDay(){ return {1:'Monday',2:'Tuesday',3:'Wednesday',4:'Thursday',5:'Friday'}[new Date().getDay()] || 'Monday'; }
+function defSettings(){ return { sections:{design:true,collab:true,reviews:true,blockers:true,next:true}, tone:'Balanced', intro:'' }; }
+function saveEntries(){ lss('wj-entries-v3', JSON.stringify(entries)); }
+function saveCfg()    { lss('wj-cfg-v3',     JSON.stringify(settings)); }
+
+function toast(msg, dur=2600){
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
   setTimeout(()=>t.classList.remove('show'), dur);
 }
 
-// ────────── Voice ──────────────────────────────────────────────────
-function initVoice(){
-  const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
-  if(!SR){ document.getElementById('mic').style.display='none'; document.getElementById('novox').style.display='block'; return; }
-  recog = new SR();
-  recog.continuous = false; recog.interimResults = true; recog.lang = 'en-US';
-  recog.onstart = ()=>{ isOn=true; document.getElementById('mic').classList.add('on'); document.getElementById('mic').innerHTML='&#9209;&#65039;'; document.getElementById('vhint').classList.add('show'); };
-  recog.onresult = e=>{ let f='',i=''; for(let x=e.resultIndex;x<e.results.length;x++){ if(e.results[x].isFinal) f+=e.results[x][0].transcript; else i+=e.results[x][0].transcript; } document.getElementById('inp').value=f||i; };
-  recog.onend = ()=>{ isOn=false; document.getElementById('mic').classList.remove('on'); document.getElementById('mic').innerHTML='&#127897;&#65039;'; document.getElementById('vhint').classList.remove('show'); const v=document.getElementById('inp').value.trim(); if(v){ addEntry(); toast('Saved by voice \u2713'); } };
-  recog.onerror = e=>{ isOn=false; document.getElementById('mic').classList.remove('on'); document.getElementById('mic').innerHTML='&#127897;&#65039;'; document.getElementById('vhint').classList.remove('show'); if(e.error==='not-allowed') toast('Mic blocked \u2014 allow mic in browser settings'); else if(e.error!=='no-speech') toast('Voice error \u2014 try again'); };
-}
-function toggleMic(){ if(!recog)return; if(isOn){recog.stop();return;} document.getElementById('inp').value=''; try{recog.start();}catch(e){} }
-
-// ────────── Service Worker + Notifications ─────────────────────────
-async function initSW(){
-  if(!('serviceWorker' in navigator)) return;
-  try {
-    const reg = await navigator.serviceWorker.register('/sw.js');
-    sw = reg;
-    console.log('SW registered');
-    scheduleNotifications();
-  } catch(e){ console.log('SW failed', e); }
+function autoResize(el){
+  el.style.height = 'auto';
+  const max = 140;
+  const h = Math.min(el.scrollHeight, max);
+  el.style.height = h + 'px';
+  el.style.overflowY = el.scrollHeight > max ? 'auto' : 'hidden';
+  updateComposePad();
 }
 
-function getNotifSlots(){
-  const now = Date.now();
-  const slots = [];
-  [0,1].forEach(offset=>{
-    [
-      {h:12, m:0,  title:'Work Journal ✍️', body:"Time to log your morning \u2014 what are you working on?"},
-      {h:16, m:45, title:'Work Journal ✍️', body:"End of day \u2014 log before you wrap up so Friday's easy."},
-    ].forEach(({h,m,title,body})=>{
-      const t = new Date();
-      t.setDate(t.getDate()+offset);
-      t.setHours(h,m,0,0);
-      if(t.getTime() > now) slots.push({ms:t.getTime(), title, body});
-    });
-  });
-  return slots;
+function updateComposePad(){
+  const c = document.getElementById('compose');
+  if (c) document.getElementById('vlog').style.paddingBottom = (c.offsetHeight + 24) + 'px';
 }
 
-function scheduleNotifications(){
-  if(!sw || !sw.active) return;
-  if(Notification.permission !== 'granted') return;
-  sw.active.postMessage({type:'SCHEDULE_NOTIFS', slots: getNotifSlots()});
+// ── Categories ─────────────────────────────────────────────────────
+function getCats(){
+  const s = ls('wj-cats-v3');
+  if (s) { try { return JSON.parse(s); } catch(e){} }
+  return JSON.parse(JSON.stringify(DEFAULT_CATS));
+}
+function saveCats(cats){ lss('wj-cats-v3', JSON.stringify(cats)); }
+function getColor(id){ return COLOR_PRESETS.find(c=>c.id===id) || COLOR_PRESETS[7]; }
+function getCat(name){
+  const cat = getCats().find(c=>c.n===name);
+  return cat || {n:name, colorId:'gray'};
 }
 
-async function requestNotifs(){
-  if(!('Notification' in window)){ toast('Notifications not supported on this browser'); return; }
-  const perm = await Notification.requestPermission();
-  if(perm === 'granted'){
-    scheduleNotifications();
-    updateNotifUI();
-    toast('Reminders enabled \u2713 12:00 PM and 4:45 PM daily');
-  } else {
-    toast('Permission denied \u2014 enable in device settings');
-  }
-}
-
-function updateNotifUI(){
-  const btn = document.getElementById('notif-btn');
-  const status = document.getElementById('notif-status');
-  if(!btn) return;
-  const p = Notification.permission;
-  if(p === 'granted'){
-    btn.textContent = 'Reminders on \u2713';
-    btn.classList.add('granted');
-    status.textContent = 'You\u2019ll be reminded at 12:00 PM and 4:45 PM in your local timezone (' + Intl.DateTimeFormat().resolvedOptions().timeZone + ').';
-  } else if(p === 'denied'){
-    btn.textContent = 'Blocked by browser';
-    status.textContent = 'Go to your browser or device settings to allow notifications for this site.';
-  } else {
-    btn.textContent = 'Enable reminders';
-    btn.classList.remove('granted');
-    status.textContent = '';
-  }
-}
-
-// ────────── Render chips ────────────────────────────────────────────
-function renderDays(){
-  document.getElementById('dchips').innerHTML = DAYS.map(d=>{
-    const on=d===selDay;
-    return `<button class="chip" onclick="selDay='${d}';renderDays()" style="border-color:${on?'var(--blue-bd)':'var(--bd)'};background:${on?'var(--blue-bg)':'transparent'};color:${on?'var(--blue)':'var(--text2)'};">${d.slice(0,3)}</button>`;
-  }).join('');
-}
-function renderCats(){
-  document.getElementById('cchips').innerHTML = CATS.map(c=>{
-    const on=c.n===selCat;
-    return `<button class="chip" onclick="selCat='${c.n}';renderCats()" style="border-color:${on?c.bd:'var(--bd)'};background:${on?c.bg:'transparent'};color:${on?c.fg:'var(--text3)'};">${c.n}</button>`;
+function renderCatChips(){
+  const cats = getCats();
+  if (!selCat || !cats.find(c=>c.n===selCat)) selCat = cats[0]?.n || '';
+  document.getElementById('cchips').innerHTML = cats.map(c=>{
+    const col = getColor(c.colorId);
+    const on  = c.n === selCat;
+    return `<button class="ccat" onclick="selCat='${c.n}';renderCatChips()" style="border-color:${on?col.bd:'var(--bd2)'};background:${on?col.bg:'transparent'};color:${on?col.fg:'var(--text2)'};">${c.n}</button>`;
   }).join('');
 }
 
-// ────────── Render entries ──────────────────────────────────────────
-function renderEntries(){
-  const el = document.getElementById('elist');
-  const byd = DAYS.map(d=>({d, items:entries.filter(e=>e.day===d)})).filter(x=>x.items.length);
-  const cnt = entries.length;
-  document.getElementById('genbtn').style.display = cnt?'block':'none';
-  document.getElementById('ecount').textContent = `${cnt} ${cnt===1?'entry':'entries'} this week`;
-  if(!byd.length){
-    el.innerHTML='<div class="empty"><div class="empty-icon">&#9998;&#65039;</div><div class="empty-t">Nothing logged yet</div><div class="empty-s">Tap the mic and just talk.<br>One line a day \u2014 Friday writes itself.</div></div>';
-    return;
-  }
-  el.innerHTML = byd.map(({d,items})=>
-    `<div class="dsect"><div class="dlbl">${d}</div>${items.map(e=>{
-      const c=CATS.find(x=>x.n===e.cat)||CATS[0];
-      return `<div class="eitem"><span class="cpill" style="background:${c.bg};color:${c.fg};border:1px solid ${c.bd}">${e.cat}</span><span class="etxt">${esc(e.text)}</span><button class="delbtn" onclick="delEntry(${e.id})">&#215;</button></div>`;
-    }).join('')}</div>`
+function renderCatSettings(){
+  const cats = getCats();
+  document.getElementById('cats-list').innerHTML = cats.length ? cats.map((c,i)=>{
+    const col = getColor(c.colorId);
+    return `<div class="cat-row">
+      <span class="cat-preview" style="background:${col.bg};color:${col.fg};border-color:${col.bd}">${c.n}</span>
+      <span class="cat-name-disp"></span>
+      <button class="cat-del" onclick="deleteCat(${i})" ${cats.length<=1?'disabled':''} title="Remove">&#215;</button>
+    </div>`;
+  }).join('') : '<div style="font-size:13px;color:var(--text3);padding:8px 0;">No categories — add one below.</div>';
+}
+
+function renderSwatches(){
+  document.getElementById('color-swatches').innerHTML = COLOR_PRESETS.map(c=>
+    `<div class="cswatch ${c.id===newCatColor?'sel':''}" style="background:${c.dot}" onclick="newCatColor='${c.id}';renderSwatches()" title="${c.id}"></div>`
   ).join('');
 }
 
-// ────────── Render settings ─────────────────────────────────────────
-function renderSettings(){
-  // Section toggles
-  document.getElementById('section-toggles').innerHTML = ALL_SECTIONS.map(s=>`
-    <div class="srow">
-      <div><div class="srow-label">${s.emoji} ${s.label}</div><div class="srow-sub">${s.desc}</div></div>
-      <button class="toggle ${settings.sections[s.id]?'on':''}" id="tog-${s.id}" onclick="toggleSection('${s.id}')"></button>
-    </div>`).join('');
-
-  // Tone
-  document.getElementById('tone-row').innerHTML = TONES.map(t=>
-    `<button class="tone-btn ${settings.tone===t?'active':''}" onclick="setTone('${t}')">${t}</button>`).join('');
-
-  // Custom intro
-  document.getElementById('custom-intro').value = settings.intro || '';
-
-  // Channel
-  document.getElementById('chan-set').value = channel;
-
-  // Timezone
-  document.getElementById('tz-display').textContent = Intl.DateTimeFormat().resolvedOptions().timeZone;
-
-  updateNotifUI();
+function addCat(){
+  const inp = document.getElementById('new-cat-inp');
+  const name = inp.value.trim();
+  if (!name) { inp.focus(); return; }
+  const cats = getCats();
+  if (cats.find(c=>c.n.toLowerCase()===name.toLowerCase())) { toast('Category already exists'); return; }
+  cats.push({n:name, colorId:newCatColor});
+  saveCats(cats); inp.value='';
+  renderCatChips(); renderCatSettings();
+  toast('Category added');
 }
 
-function toggleSection(id){
-  settings.sections[id] = !settings.sections[id];
-  saveCfg();
-  const btn = document.getElementById('tog-'+id);
-  btn.classList.toggle('on', settings.sections[id]);
-  toast((settings.sections[id]?'Section on':'Section hidden')+' \u2013 regenerate to apply');
-}
-function setTone(t){
-  settings.tone = t;
-  saveCfg();
-  document.querySelectorAll('.tone-btn').forEach(b=>b.classList.toggle('active', b.textContent===t));
-  toast('Tone set to '+t+' \u2014 regenerate to apply');
-}
-document.addEventListener('input', e=>{
-  if(e.target.id==='custom-intro'){ settings.intro=e.target.value; saveCfg(); }
-});
-function saveChanSetting(){
-  channel = document.getElementById('chan-set').value;
-  lss('wj-chan', channel);
-  if(document.getElementById('chan')) document.getElementById('chan').value = channel;
+function deleteCat(i){
+  const cats = getCats();
+  if (cats.length <= 1) return;
+  const removed = cats[i].n;
+  cats.splice(i,1);
+  saveCats(cats);
+  if (selCat === removed) selCat = cats[0]?.n || '';
+  renderCatChips(); renderCatSettings();
+  toast('Removed');
 }
 
-// ────────── Entry actions ───────────────────────────────────────────
-function addEntry(){
-  const inp=document.getElementById('inp');
-  const txt=inp.value.trim();
-  if(!txt){inp.focus();return;}
-  entries.push({id:Date.now(),day:selDay,cat:selCat,text:txt});
-  save(); inp.value=''; inp.focus(); renderEntries();
+function resetCats(){
+  saveCats(JSON.parse(JSON.stringify(DEFAULT_CATS)));
+  selCat = DEFAULT_CATS[0].n;
+  renderCatChips(); renderCatSettings();
+  toast('Categories reset to defaults');
 }
-function delEntry(id){ entries=entries.filter(e=>e.id!==id); save(); renderEntries(); }
-function clearWeek(){
-  const btn=document.getElementById('clrbtn');
-  cs++;
-  if(cs===1){ btn.textContent='Tap again to confirm'; btn.classList.add('warn'); ct=setTimeout(()=>{cs=0;btn.textContent='Clear week';btn.classList.remove('warn');},3000); }
-  else{
-    clearTimeout(ct); entries=[]; saved='';
-    localStorage.removeItem('wj-v1'); localStorage.removeItem('wj-rep');
-    cs=0; btn.textContent='Clear week'; btn.classList.remove('warn');
-    renderEntries(); document.getElementById('rta').value='';
-    go('log'); toast('Fresh week started');
+
+// ── Voice ──────────────────────────────────────────────────────────
+function initVoice(){
+  const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  if (!SR){
+    document.getElementById('novox').textContent = 'Voice not supported — use Chrome (Android) or Safari.';
+    document.getElementById('novox').style.display = 'block';
+    document.getElementById('fab').style.display = 'none';
+    return;
+  }
+
+  recog = new SR();
+  recog.continuous     = false;
+  recog.interimResults = true;
+  recog.lang           = 'en-US';
+
+  recog.onstart = () => {
+    isRecording = true;
+    voiceText = '';
+    const fab = document.getElementById('fab');
+    fab.className = 'fab f-rec';
+    fab.innerHTML = '&#9209;&#65039;'; // ⏹
+    document.getElementById('vhint').classList.add('show');
+  };
+
+  // KEY FIX: accumulate final transcripts in voiceText variable, not just DOM
+  recog.onresult = (e) => {
+    let finalChunk = '', interim = '';
+    for (let i = e.resultIndex; i < e.results.length; i++){
+      if (e.results[i].isFinal) finalChunk += e.results[i][0].transcript;
+      else interim += e.results[i][0].transcript;
+    }
+    if (finalChunk) voiceText += finalChunk; // accumulate finals
+    const inp = document.getElementById('inp');
+    inp.value = voiceText || interim;
+    autoResize(inp);
+  };
+
+  recog.onerror = (e) => {
+    isRecording = false;
+    resetFABState();
+    if (e.error === 'not-allowed') toast('Mic blocked — allow mic in your browser settings');
+    else if (e.error !== 'no-speech') toast('Voice error — please try again');
+    voiceText = '';
+  };
+
+  // KEY FIX: 150ms delay so iOS finishes firing all onresult callbacks
+  recog.onend = () => {
+    isRecording = false;
+    document.getElementById('vhint').classList.remove('show');
+
+    setTimeout(() => {
+      const inp  = document.getElementById('inp');
+      // Use the stored voiceText variable — reliable across all browsers
+      const text = voiceText.trim() || inp.value.trim();
+
+      if (text){
+        inp.value = text;
+        autoResize(inp);
+        updateFAB(); // switches to send arrow
+        toast('Voice captured — tap \u27A4 to save');
+      } else {
+        inp.value = '';
+        autoResize(inp);
+        updateFAB(); // stays as mic
+      }
+      voiceText = ''; // reset for next recording
+    }, 150);
+  };
+}
+
+function toggleMic(){
+  if (!recog) return;
+  if (isRecording){ recog.stop(); return; }
+  document.getElementById('inp').value = '';
+  autoResize(document.getElementById('inp'));
+  try { recog.start(); }
+  catch(err){ toast('Could not start recording — try again'); }
+}
+
+function resetFABState(){
+  const fab = document.getElementById('fab');
+  fab.className = 'fab f-mic';
+  fab.innerHTML = '&#127897;';
+}
+
+// ── FAB ───────────────────────────────────────────────────────────
+function fabAction(){
+  const hasText = document.getElementById('inp').value.trim().length > 0;
+  if (isRecording){ toggleMic(); return; }
+  if (hasText) addEntry();
+  else toggleMic();
+}
+
+function updateFAB(){
+  if (isRecording) return;
+  const fab     = document.getElementById('fab');
+  const hasText = document.getElementById('inp').value.trim().length > 0;
+  if (hasText){
+    fab.className = 'fab f-send';
+    fab.innerHTML = '&#10148;'; // ➤
+  } else {
+    fab.className = 'fab f-mic';
+    fab.innerHTML = '&#127897;'; // 🎙
   }
 }
 
-// ────────── Views ───────────────────────────────────────────────────
-function go(v){
-  ['log','report','settings'].forEach(x=>{
-    document.getElementById('v'+x.replace('report','rep').replace('settings','set')).style.display = v===x?'block':'none';
-    document.getElementById('t'+x.slice(0,3)).classList.toggle('active',v===x);
-  });
-  if(v==='report') showRep();
-  if(v==='settings') renderSettings();
+// ── Day chips ──────────────────────────────────────────────────────
+function renderDayChips(){
+  const today = todayDay();
+  document.getElementById('dayfilt').innerHTML = DAYS.map(d => {
+    const active  = d === selDay;
+    const isToday = d === today;
+    const count   = entries.filter(e=>e.day===d).length;
+    let cls = 'dchip';
+    if (active)  cls += ' active';
+    if (isToday && !active) cls += ' today-line';
+    return `<button class="${cls}" onclick="setDay('${d}')">
+      ${d.slice(0,3)}${count>0?'<span class="dc"></span>':''}
+    </button>`;
+  }).join('');
 }
+
+function setDay(d){
+  selDay = d;
+  renderDayChips();
+  renderEntries();
+}
+
+// ── Entries ────────────────────────────────────────────────────────
+function renderEntries(){
+  const el    = document.getElementById('elist');
+  const total = entries.length;
+  const today = todayDay();
+  document.getElementById('ecount').textContent = `${total} ${total===1?'entry':'entries'} this week`;
+  document.getElementById('genbtn').style.display = total ? 'block' : 'none';
+
+  const filtered = entries.filter(e=>e.day===selDay);
+  if (!filtered.length){
+    const label = selDay===today ? 'today' : selDay;
+    el.innerHTML = `<div class="empty"><div class="empty-icon">&#9998;&#65039;</div><div class="empty-t">Nothing logged for ${label}</div><div class="empty-s">Tap the mic or type below.<br>Takes under 10 seconds.</div></div>`;
+    return;
+  }
+  el.innerHTML = `<div class="day-header">${selDay}</div>` +
+    filtered.map(e=>{
+      const cat = getCat(e.cat);
+      const col = getColor(cat.colorId);
+      return `<div class="eitem">
+        <span class="cpill" style="background:${col.bg};color:${col.fg};border:1px solid ${col.bd}">${e.cat}</span>
+        <span class="etxt">${esc(e.text)}</span>
+        <button class="delbtn" onclick="delEntry(${e.id})">&#215;</button>
+      </div>`;
+    }).join('');
+}
+
+function addEntry(){
+  const inp = document.getElementById('inp');
+  const txt = inp.value.trim();
+  if (!txt){ inp.focus(); return; }
+  if (!selCat){
+    const cats = getCats();
+    if (!cats.length){ toast('Add a category first in Settings'); return; }
+    selCat = cats[0].n;
+  }
+  entries.push({id:Date.now(), day:selDay, cat:selCat, text:txt});
+  saveEntries();
+  inp.value = '';
+  autoResize(inp);
+  updateFAB();
+  renderEntries();
+  renderDayChips(); // update dot indicators
+}
+
+function delEntry(id){
+  entries = entries.filter(e=>e.id!==id);
+  saveEntries(); renderEntries(); renderDayChips();
+}
+
+function clearWeek(){
+  const btn = document.getElementById('clrbtn');
+  clearStep++;
+  if (clearStep===1){
+    btn.textContent='Tap again to confirm'; btn.classList.add('warn');
+    clearTimer = setTimeout(()=>{clearStep=0;btn.textContent='Clear week';btn.classList.remove('warn');},3000);
+  } else {
+    clearTimeout(clearTimer);
+    entries=[]; savedReport='';
+    localStorage.removeItem('wj-entries-v3'); localStorage.removeItem('wj-rep');
+    clearStep=0; btn.textContent='Clear week'; btn.classList.remove('warn');
+    renderEntries(); renderDayChips();
+    document.getElementById('rta').value='';
+    toast('Fresh week started');
+  }
+}
+
+// ── Views ──────────────────────────────────────────────────────────
+function go(v){
+  const views = {log:'vlog', report:'vrep', settings:'vset'};
+  const tabs  = {log:'tlog', report:'trep', settings:'tset'};
+  Object.keys(views).forEach(k=>{
+    document.getElementById(views[k]).style.display = k===v?'block':'none';
+    document.getElementById(tabs[k]).classList.toggle('active',k===v);
+  });
+  const compose = document.getElementById('compose');
+  compose.style.display = v==='log'?'block':'none';
+  if (v==='report')   showRep();
+  if (v==='settings') renderSettings();
+  if (v==='log')      setTimeout(updateComposePad, 50);
+}
+
 function showRep(){
   document.getElementById('rloading').style.display='none';
-  if(saved){
-    document.getElementById('rta').value=saved;
+  if (savedReport){
+    document.getElementById('rta').value=savedReport;
     document.getElementById('chan').value=channel;
     document.getElementById('rcontent').style.display='block';
     document.getElementById('rempty').style.display='none';
@@ -487,60 +718,72 @@ function showRep(){
   }
 }
 
-// ────────── Generate ────────────────────────────────────────────────
+// ── Report generation ──────────────────────────────────────────────
 function buildPrompt(){
-  const activeSections = ALL_SECTIONS.filter(s=>settings.sections[s.id]);
+  const cats  = getCats().map(c=>c.n).join(', ');
+  const sects = ALL_SECTIONS.filter(s=>settings.sections[s.id]);
   const toneMap = {
-    Formal: 'professional and formal, appropriate for senior leadership',
-    Balanced: 'senior and confident, clear and direct without being stiff',
-    Casual: 'friendly and conversational while still professional',
+    Formal:'professional and formal, appropriate for senior leadership',
+    Balanced:'senior and confident, clear and direct without being stiff',
+    Casual:'friendly and conversational while still professional',
   };
-  const sectionInstructions = activeSections.map(s=>`*${s.emoji} ${s.label}*\n- bullet points`).join('\n\n');
-  const introLine = settings.intro ? `Start with this custom intro line after the header: "${settings.intro}"\n\n` : '';
+  const introLine = settings.intro
+    ? `After the date header, add this custom opening line: "${settings.intro}"\n\n`
+    : '';
+  const sectStr = sects.map(s=>`*${s.emoji} ${s.label}*\n- bullet points`).join('\n\n');
   return `You write weekly work summaries for a Senior Product Designer at Moniepoint, a Nigerian fintech company.
 
 ${introLine}Tone: ${toneMap[settings.tone]||toneMap.Balanced}
+Categories used in their logs: ${cats}
 
-Format for Slack (ready to paste). Include only these sections:
+Format for Slack (ready to paste):
 
-*📅 Weekly Update — [infer week from entries, e.g. "Week of March 24"]*
+*📅 Weekly Update — [infer week from entries]*
 
-${sectionInstructions}
+${sectStr}
 
 Rules:
-- Lead with impact, not tasks ("Defined the payment flow" not "worked on payment flow")
+- Lead with impact, not tasks ("Defined the payment confirmation flow" not "worked on payment flow")
 - Max 45 seconds to read
-- Skip sections that have no relevant content
-- No filler, no padding
-- Use Slack markdown (*bold*, - bullets)`;
+- Skip sections with no relevant content
+- Use Slack markdown (*bold*, - bullets)
+- No filler or padding`;
 }
 
 async function doGen(){
-  if(!entries.length){toast('Add some entries first');return;}
+  if (!entries.length){ toast('Add some entries first'); return; }
   go('report');
   document.getElementById('rloading').style.display='block';
   document.getElementById('rcontent').style.display='none';
   document.getElementById('rempty').style.display='none';
-  const sub=document.getElementById('rsub');
-  const msgs=['Reading your entries\u2026','Grouping by theme\u2026','Writing in Senior PD voice\u2026','Almost done\u2026'];
+  const sub  = document.getElementById('rsub');
+  const msgs = ['Reading your entries\u2026','Grouping by theme\u2026','Writing in Senior PD voice\u2026','Polishing\u2026'];
   let mi=0; const mt=setInterval(()=>{if(mi<msgs.length-1)sub.textContent=msgs[++mi];},900);
-  const log=DAYS.map(d=>{const it=entries.filter(e=>e.day===d);return it.length?`${d}:\n${it.map(e=>`  [${e.cat}] ${e.text}`).join('\n')}`:null;}).filter(Boolean).join('\n\n');
+  const log = DAYS.map(d=>{
+    const it = entries.filter(e=>e.day===d);
+    return it.length?`${d}:\n${it.map(e=>`  [${e.cat}] ${e.text}`).join('\n')}`:null;
+  }).filter(Boolean).join('\n\n');
   try{
-    const res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({
-      model:'claude-sonnet-4-20250514', max_tokens:1000,
-      system: buildPrompt(),
-      messages:[{role:'user',content:`My log this week:\n\n${log}\n\nWrite my weekly Slack update.`}]
-    })});
+    const res=await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,system:buildPrompt(),messages:[{role:'user',content:`My log this week:\n\n${log}\n\nWrite my weekly Slack update.`}]})
+    });
     clearInterval(mt);
     const data=await res.json();
     const out=data.content?.[0]?.text||'Failed \u2014 try again.';
-    saved=out; lss('wj-rep',out);
-    document.getElementById('rta').value=out; document.getElementById('chan').value=channel;
-    document.getElementById('rloading').style.display='none'; document.getElementById('rcontent').style.display='block';
-  }catch{clearInterval(mt);document.getElementById('rloading').style.display='none';document.getElementById('rempty').style.display='block';toast('Connection error \u2014 try again');}
+    savedReport=out; lss('wj-rep',out);
+    document.getElementById('rta').value=out;
+    document.getElementById('chan').value=channel;
+    document.getElementById('rloading').style.display='none';
+    document.getElementById('rcontent').style.display='block';
+  } catch{
+    clearInterval(mt);
+    document.getElementById('rloading').style.display='none';
+    document.getElementById('rempty').style.display='block';
+    toast('Connection error \u2014 try again');
+  }
 }
 
-// ────────── Slack ───────────────────────────────────────────────────
 async function sendSlack(){
   const rpt=document.getElementById('rta').value.trim();
   const ch=document.getElementById('chan').value.trim();
@@ -548,17 +791,13 @@ async function sendSlack(){
   channel=ch; lss('wj-chan',ch);
   const btn=document.getElementById('sendbtn'); btn.disabled=true; btn.textContent='Sending\u2026';
   try{
-    const res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({
-      model:'claude-sonnet-4-20250514',max_tokens:500,
-      system:'Send exactly the message given to the Slack channel specified.',
-      messages:[{role:'user',content:`Send to ${ch}:\n\n${rpt}`}],
-      mcp_servers:[{type:'url',url:'https://mcp.slack.com/mcp',name:'slack'}]
-    })});
+    const res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:500,system:'Send exactly the message given to the Slack channel specified.',messages:[{role:'user',content:`Send to ${ch}:\n\n${rpt}`}],mcp_servers:[{type:'url',url:'https://mcp.slack.com/mcp',name:'slack'}]})});
     const data=await res.json();
     toast(data.content?'Sent to Slack \u2713':'Slack not connected \u2014 use Copy');
-  }catch{toast('Error \u2014 use Copy instead');}
+  } catch{ toast('Error \u2014 use Copy instead'); }
   btn.disabled=false; btn.textContent='Send to Slack';
 }
+
 function copyRep(){
   const txt=document.getElementById('rta').value;
   if(!txt)return;
@@ -570,19 +809,189 @@ function copyRep(){
   });
 }
 
-// ────────── Install prompt ──────────────────────────────────────────
+// ── Settings render ────────────────────────────────────────────────
+function renderSettings(){
+  // Sections
+  document.getElementById('sec-toggles').innerHTML = ALL_SECTIONS.map(s=>
+    `<div class="srow"><div class="srow-l"><div class="srow-lbl">${s.emoji} ${s.label}</div></div>
+    <button class="stoggle${settings.sections[s.id]?' on':''}" id="tog-${s.id}" onclick="toggleSection('${s.id}')"></button></div>`
+  ).join('');
+  // Tone
+  document.getElementById('tone-row').innerHTML = TONES.map(t=>
+    `<button class="tone-btn${settings.tone===t?' on':''}" onclick="setTone('${t}')">${t}</button>`
+  ).join('');
+  // Intro
+  document.getElementById('s-intro').value = settings.intro || '';
+  // Channel
+  document.getElementById('s-chan').value = channel;
+  // Timezone
+  document.getElementById('tz-lbl').textContent = Intl.DateTimeFormat().resolvedOptions().timeZone;
+  // Cats
+  renderCatSettings(); renderSwatches();
+  // Notif
+  updateNotifUI();
+}
+
+function toggleSection(id){
+  settings.sections[id] = !settings.sections[id]; saveCfg();
+  document.getElementById('tog-'+id).classList.toggle('on', settings.sections[id]);
+  toast((settings.sections[id]?'On':'Off')+' \u2014 regenerate to apply');
+}
+
+function setTone(t){
+  settings.tone=t; saveCfg();
+  document.querySelectorAll('.tone-btn').forEach(b=>b.classList.toggle('on',b.textContent===t));
+  toast('Tone: '+t);
+}
+
+document.addEventListener('input', e=>{
+  if (e.target.id==='s-intro'){ settings.intro=e.target.value; saveCfg(); }
+});
+
+function saveSChan(){
+  channel=document.getElementById('s-chan').value; lss('wj-chan',channel);
+  const c=document.getElementById('chan'); if(c) c.value=channel;
+}
+
+// ── Notifications ──────────────────────────────────────────────────
+async function requestNotifs(){
+  if (!('Notification' in window)){ toast('Notifications not supported here'); return; }
+
+  const isIOS       = /iphone|ipad|ipod/i.test(navigator.userAgent);
+  const isInstalled = window.navigator.standalone || window.matchMedia('(display-mode:standalone)').matches;
+
+  if (isIOS && !isInstalled){
+    document.getElementById('ios-install-note').style.display = 'block';
+    toast('Install to Home Screen first \u2014 see instructions above', 3500);
+    return;
+  }
+
+  let perm = Notification.permission;
+  if (perm === 'default') perm = await Notification.requestPermission();
+
+  updateNotifUI();
+
+  if (perm === 'granted'){
+    lss('wj-notif','1');
+    scheduleToSW();
+    startInAppCheck();
+    toast('Reminders enabled \u2713 12:00 PM and 4:45 PM');
+  } else if (perm === 'denied'){
+    toast('Permission denied \u2014 enable in device Settings \u2192 browser \u2192 Notifications');
+  }
+}
+
+function updateNotifUI(){
+  const btn    = document.getElementById('notif-btn');
+  const note   = document.getElementById('notif-note');
+  const isIOS  = /iphone|ipad|ipod/i.test(navigator.userAgent);
+  if (!btn) return;
+
+  const p = ('Notification' in window) ? Notification.permission : 'unsupported';
+  if (p === 'granted'){
+    btn.textContent='Reminders on \u2713'; btn.className='notif-btn granted';
+    note.textContent='Firing at 12:00 PM and 4:45 PM in your timezone. Requires app to be open or recently used on iOS.';
+  } else if (p === 'denied'){
+    btn.textContent='Notifications blocked'; btn.className='notif-btn denied';
+    note.textContent='Go to device Settings \u2192 '+( isIOS?'Safari':'your browser')+' \u2192 Notifications and allow this site.';
+  } else if (p === 'unsupported'){
+    btn.textContent='Not supported'; btn.className='notif-btn denied';
+    note.textContent='Try Chrome on Android or Safari on iOS 16.4+.';
+  } else {
+    btn.textContent='Enable reminders'; btn.className='notif-btn';
+    note.textContent='';
+  }
+}
+
+function scheduleToSW(){
+  if (!navigator.serviceWorker?.controller) return;
+  navigator.serviceWorker.controller.postMessage({type:'NOTIF_ENABLE'});
+}
+
+let inAppCheckInterval = null;
+function startInAppCheck(){
+  if (inAppCheckInterval) clearInterval(inAppCheckInterval);
+  inAppCheckInterval = setInterval(checkNotifTime, 60000);
+}
+
+function checkNotifTime(){
+  if (Notification.permission !== 'granted') return;
+  const now    = new Date();
+  const h=now.getHours(), m=now.getMinutes();
+  const today  = now.toDateString();
+  const sent   = JSON.parse(ls('wj-notif-sent')||'{}');
+  if (today !== sent.date) { sent.date=today; delete sent.noon; delete sent.eod; }
+
+  if (h===12 && m<=2 && !sent.noon){
+    sent.noon=true; lss('wj-notif-sent',JSON.stringify(sent));
+    new Notification('Work Journal \u270d\ufe0f',{body:'Time to log your morning \u2014 what have you been working on?',tag:'noon'});
+  }
+  if (h===16 && m>=45 && !sent.eod){
+    sent.eod=true; lss('wj-notif-sent',JSON.stringify(sent));
+    new Notification('Work Journal \u270d\ufe0f',{body:'End of day \u2014 log before you wrap up so Friday is easy.',tag:'eod'});
+  }
+}
+
+// ── PWA / SW ───────────────────────────────────────────────────────
+async function initSW(){
+  if (!('serviceWorker' in navigator)) return;
+  try {
+    await navigator.serviceWorker.register('/sw.js');
+    if (ls('wj-notif')==='1' && Notification.permission==='granted'){
+      scheduleToSW();
+      startInAppCheck();
+    }
+  } catch(e){ console.warn('SW failed', e); }
+}
+
 function showHow(){ toast('Safari: tap Share \u2192 Add to Home Screen'); dismissBar(); }
 function dismissBar(){ document.getElementById('ibar').style.display='none'; lss('wj-idm','1'); }
 
-// ────────── Init ────────────────────────────────────────────────────
-document.addEventListener('DOMContentLoaded',()=>{
-  document.getElementById('inp').addEventListener('keydown',e=>{ if(e.key==='Enter') addEntry(); });
-  window.addEventListener('scroll',()=>{ document.getElementById('hdr').classList.toggle('scrolled',scrollY>8); },{passive:true});
-  const isIOS=/iphone|ipad|ipod/i.test(navigator.userAgent);
-  if(isIOS && !navigator.standalone && !ls('wj-idm')) document.getElementById('ibar').style.display='flex';
+// ── Visual viewport (keyboard handling on iOS) ─────────────────────
+function initViewport(){
+  if (!window.visualViewport) return;
+  window.visualViewport.addEventListener('resize', ()=>{
+    const compose = document.getElementById('compose');
+    if (!compose) return;
+    const offset = window.innerHeight - window.visualViewport.height - window.visualViewport.offsetTop;
+    compose.style.bottom = Math.max(0, offset) + 'px';
+  }, {passive:true});
+}
+
+// ── Init ───────────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', ()=>{
+  // Input listeners
+  const inp = document.getElementById('inp');
+  inp.addEventListener('input', ()=>{ autoResize(inp); updateFAB(); });
+  inp.addEventListener('keydown', e=>{ if(e.key==='Enter'&&!e.shiftKey){ e.preventDefault(); fabAction(); } });
+
+  // Scroll shadow
+  window.addEventListener('scroll',()=>{
+    document.getElementById('hdr').classList.toggle('scrolled',scrollY>4);
+  },{passive:true});
+
+  // iOS install hint
+  const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
+  if (isIOS && !navigator.standalone && !ls('wj-idm'))
+    document.getElementById('ibar').style.display='flex';
+
+  // Init selCat from saved cats
+  const cats = getCats();
+  selCat = cats[0]?.n || 'Design';
+
+  // Render everything
+  renderDayChips();
+  renderCatChips();
+  renderEntries();
   initVoice();
   initSW();
-  renderDays(); renderCats(); renderEntries();
+  initViewport();
+  setTimeout(updateComposePad, 100);
+
+  // Missed notification check on app open
+  if (ls('wj-notif')==='1' && Notification.permission==='granted'){
+    setTimeout(checkNotifTime, 1000);
+  }
 });
 </script>
 </body>
