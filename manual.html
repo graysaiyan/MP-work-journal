@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Work Journal — User Guide</title>
+<style>
+:root{--text:#111110;--text2:#5f5e5a;--text3:#a8a8a4;--bg:#fafaf8;--bg2:#f2f0ec;--bd:#e5e3de;--blue:#3b5bdb;--green:#2f9e44;--r:10px;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;}
+.page{max-width:680px;margin:0 auto;padding:48px 24px 80px;}
+.cover{text-align:center;padding:56px 0 48px;border-bottom:1px solid var(--bd);margin-bottom:48px;}
+.app-icon{font-size:56px;margin-bottom:16px;}
+h1{font-size:32px;font-weight:700;letter-spacing:-.03em;margin-bottom:8px;}
+.subtitle{font-size:16px;color:var(--text2);max-width:420px;margin:0 auto;}
+.badge{display:inline-block;font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px;background:var(--bg2);color:var(--text3);border:1px solid var(--bd);margin-top:12px;}
+section{margin-bottom:48px;}
+h2{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);margin-bottom:20px;padding-bottom:8px;border-bottom:1px solid var(--bd);}
+h3{font-size:17px;font-weight:600;margin-bottom:6px;letter-spacing:-.01em;}
+p{font-size:14px;color:var(--text2);line-height:1.65;margin-bottom:12px;}
+.card{background:#fff;border:1px solid var(--bd);border-radius:var(--r);padding:16px 20px;margin-bottom:10px;}
+.card h3{font-size:14px;margin-bottom:4px;}
+.card p{font-size:13px;margin:0;color:var(--text2);}
+.steps{counter-reset:step;display:flex;flex-direction:column;gap:14px;}
+.step{display:flex;gap:14px;align-items:flex-start;}
+.step-num{width:28px;height:28px;border-radius:50%;background:var(--text);color:#fff;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
+.step-body h3{font-size:14px;margin-bottom:3px;}
+.step-body p{font-size:13px;margin:0;color:var(--text2);}
+.feature-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;}
+.feat{background:#fff;border:1px solid var(--bd);border-radius:var(--r);padding:14px 16px;}
+.feat-icon{font-size:20px;margin-bottom:6px;}
+.feat-title{font-size:13px;font-weight:600;margin-bottom:3px;}
+.feat-desc{font-size:12px;color:var(--text2);line-height:1.5;}
+.cats{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px;}
+.cat{padding:4px 12px;border-radius:20px;font-size:12px;font-weight:600;border:1px solid;}
+.tip{background:var(--bg2);border-left:3px solid var(--blue);padding:12px 16px;border-radius:0 var(--r) var(--r) 0;margin:16px 0;}
+.tip p{font-size:13px;margin:0;color:var(--text2);}
+.tip strong{color:var(--text);}
+.qrow{margin-bottom:16px;}
+.qrow dt{font-size:14px;font-weight:600;margin-bottom:4px;}
+.qrow dd{font-size:13px;color:var(--text2);line-height:1.55;}
+.notify-times{display:flex;gap:10px;margin:12px 0;}
+.time-card{flex:1;background:#fff;border:1px solid var(--bd);border-radius:var(--r);padding:12px;text-align:center;}
+.time-card .time{font-size:20px;font-weight:700;letter-spacing:-.02em;color:var(--text);}
+.time-card .tlbl{font-size:11px;color:var(--text3);margin-top:3px;}
+footer{text-align:center;font-size:12px;color:var(--text3);border-top:1px solid var(--bd);padding-top:24px;margin-top:48px;}
+@media print{.page{padding:24px;}}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="cover">
+    <div class="app-icon">✏️</div>
+    <h1>Work Journal</h1>
+    <p class="subtitle">Log your work in seconds every day. Get a polished Slack report written for you every Friday.</p>
+    <div class="badge">v2.0 &nbsp;·&nbsp; User Guide</div>
+  </div>
+
+  <section>
+    <h2>What this app does</h2>
+    <div class="feature-grid">
+      <div class="feat"><div class="feat-icon">📝</div><div class="feat-title">Daily logging</div><div class="feat-desc">Type or use your voice to log work in seconds. Organised by day and category automatically.</div></div>
+      <div class="feat"><div class="feat-icon">🎙️</div><div class="feat-title">Voice recording</div><div class="feat-desc">Tap the mic, talk naturally, and your entry is saved. No typing required.</div></div>
+      <div class="feat"><div class="feat-icon">✨</div><div class="feat-title">AI report generation</div><div class="feat-desc">One tap on Friday and your entire week becomes a structured, professional Slack update.</div></div>
+      <div class="feat"><div class="feat-icon">💬</div><div class="feat-title">Slack ready</div><div class="feat-desc">The report is formatted for Slack with bold headers and bullet points. Review, edit, then send or copy.</div></div>
+      <div class="feat"><div class="feat-icon">🔔</div><div class="feat-title">Reminders</div><div class="feat-desc">Optional notifications at 12:00 PM and 4:45 PM in your timezone nudge you to log before you forget.</div></div>
+      <div class="feat"><div class="feat-icon">⚙️</div><div class="feat-title">Customisable format</div><div class="feat-desc">Choose which sections appear in your report, set the tone, and add a custom opening line.</div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Getting started — install on your device</h2>
+    <div class="steps">
+      <div class="step"><div class="step-num">1</div><div class="step-body"><h3>Open the link in your browser</h3><p>Use Safari on iPhone/iPad, or Chrome on Android. Paste the app URL into your browser's address bar.</p></div></div>
+      <div class="step"><div class="step-num">2</div><div class="step-body"><h3>Add to your Home Screen</h3><p><strong>iPhone / iPad:</strong> tap the Share icon (box with arrow) at the bottom of Safari &rarr; scroll down and tap <em>Add to Home Screen</em> &rarr; tap Add.<br><br><strong>Android:</strong> tap the three-dot menu in Chrome &rarr; tap <em>Add to Home Screen</em> or <em>Install app</em>.</p></div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-body"><h3>Open from your Home Screen</h3><p>The app launches fullscreen, just like a native app. Your data is stored on your device — private to you.</p></div></div>
+      <div class="step"><div class="step-num">4</div><div class="step-body"><h3>Enable notifications (optional but recommended)</h3><p>Go to <strong>Settings</strong> tab &rarr; tap <em>Enable reminders</em>. Allow notifications when prompted. You'll get a nudge at 12:00 PM and 4:45 PM daily.</p></div></div>
+    </div>
+    <div class="tip"><p><strong>Desktop:</strong> Chrome and Edge on Mac/Windows also support Add to Home Screen / Install app from the address bar.</p></div>
+  </section>
+
+  <section>
+    <h2>How to log your work</h2>
+    <p>The <strong>Log</strong> tab is where you spend most of your time. Here's the flow:</p>
+    <div class="steps">
+      <div class="step"><div class="step-num">1</div><div class="step-body"><h3>Select the day</h3><p>Tap Mon, Tue, Wed, Thu, or Fri. It defaults to today automatically.</p></div></div>
+      <div class="step"><div class="step-num">2</div><div class="step-body"><h3>Pick a category</h3><p>Choose what kind of work it is. This helps the AI organise your report properly.</p></div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-body"><h3>Log the entry — by voice or typing</h3><p><strong>Voice:</strong> tap the 🎙️ mic button, speak naturally, and the entry saves automatically when you stop.<br><strong>Typing:</strong> type in the text field and tap Add (or press Enter).</p></div></div>
+    </div>
+    <br>
+    <h3 style="font-size:13px;font-weight:600;color:var(--text2);margin-bottom:10px;">The six categories</h3>
+    <div class="cats">
+      <span class="cat" style="background:#eef4ff;color:#3b5bdb;border-color:#c5d3f7;">Design</span>
+      <span class="cat" style="background:#edfcf2;color:#2f9e44;border-color:#b2f0c3;">Collab</span>
+      <span class="cat" style="background:#fff8e1;color:#e67700;border-color:#fde68a;">Review</span>
+      <span class="cat" style="background:#f3f0ff;color:#6741d9;border-color:#d0bfff;">Research</span>
+      <span class="cat" style="background:#fff0f0;color:#e03131;border-color:#fcc2c2;">Blocked</span>
+      <span class="cat" style="background:#f4f4f2;color:#6b6b68;border-color:#dddbd6;">Admin</span>
+    </div>
+    <div class="card"><h3>Design</h3><p>Wireframes, flows, prototypes, Figma work, visual design decisions</p></div>
+    <div class="card"><h3>Collab</h3><p>Stakeholder meetings, PM syncs, handoffs to engineering, team discussions</p></div>
+    <div class="card"><h3>Review</h3><p>Reviewing other work, getting feedback, critique sessions, design QA</p></div>
+    <div class="card"><h3>Research</h3><p>User research, competitor analysis, discovery work, reading docs</p></div>
+    <div class="card"><h3>Blocked</h3><p>Anything you're stuck on, waiting for, or that needs escalation</p></div>
+    <div class="card"><h3>Admin</h3><p>Meetings, planning, documentation, anything operational</p></div>
+
+    <div class="tip" style="margin-top:20px;"><p><strong>Pro tip:</strong> One or two entries per day is enough. You don't need to log everything — just the things you'd want to mention in your weekly update. The AI fills in the structure.</p></div>
+  </section>
+
+  <section>
+    <h2>Generating your weekly report</h2>
+    <div class="steps">
+      <div class="step"><div class="step-num">1</div><div class="step-body"><h3>Tap "Generate weekly report"</h3><p>This button appears in the Log tab once you have entries. Usually done on Friday afternoon.</p></div></div>
+      <div class="step"><div class="step-num">2</div><div class="step-body"><h3>Wait ~5 seconds</h3><p>The AI reads all your entries, groups them by theme, and writes a structured update in your chosen tone.</p></div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-body"><h3>Review and edit</h3><p>The report appears in the Report tab as an editable text area. Read it, adjust any wording, and it's ready.</p></div></div>
+      <div class="step"><div class="step-num">4</div><div class="step-body"><h3>Send or copy</h3><p>Enter your Slack channel name (e.g. <code>#design-updates</code>) and tap Send to Slack, or tap Copy to Clipboard and paste it yourself.</p></div></div>
+    </div>
+    <div class="tip"><p><strong>Not happy with it?</strong> Tap <em>Regenerate</em> for a fresh version. You can also edit the report directly in the text area before sending.</p></div>
+  </section>
+
+  <section>
+    <h2>Customising your report format</h2>
+    <p>Go to the <strong>Settings</strong> tab to control exactly how your reports look.</p>
+    <div class="card"><h3>Report sections</h3><p>Toggle each section on or off. Only the sections you enable will appear in the report. Default is all five on.</p></div>
+    <div class="card"><h3>Tone</h3><p><strong>Formal</strong> — structured, appropriate for leadership audiences.<br><strong>Balanced</strong> — confident and clear, the recommended default.<br><strong>Casual</strong> — friendly and conversational, good for close-knit teams.</p></div>
+    <div class="card"><h3>Custom intro</h3><p>Add an optional opening line that always appears after the header, e.g. "Solid week across design and collab." Leave blank for no intro.</p></div>
+    <div class="tip"><p>Settings apply to the next report you generate. If you've already generated one, tap Regenerate to apply the new format.</p></div>
+  </section>
+
+  <section>
+    <h2>Notifications</h2>
+    <p>Enable daily reminders in Settings to stay consistent without relying on memory.</p>
+    <div class="notify-times">
+      <div class="time-card"><div class="time">12:00 PM</div><div class="tlbl">Midday check-in</div></div>
+      <div class="time-card"><div class="time">4:45 PM</div><div class="tlbl">End of day log</div></div>
+    </div>
+    <p>Notifications fire at your device's local timezone — no setup needed. If you're travelling, they automatically adjust.</p>
+    <div class="tip"><p><strong>iOS note:</strong> Notifications only work when the app is installed to your Home Screen via Safari. They won't work in a regular browser tab on iPhone.</p></div>
+  </section>
+
+  <section>
+    <h2>Getting updates</h2>
+    <p>The app updates automatically. When a new version is published, just close and reopen the app (or pull to refresh) and you'll have the latest version. <strong>Your data is never affected by updates</strong> — it stays on your device.</p>
+    <div class="tip"><p>If something looks broken after an update, try: Settings &rarr; Safari/Chrome &rarr; Clear Cache. Your journal entries are stored separately and won't be deleted.</p></div>
+  </section>
+
+  <section>
+    <h2>Frequently asked questions</h2>
+    <dl>
+      <div class="qrow"><dt>Is my data shared with anyone?</dt><dd>No. Your journal entries are stored only on your device in your browser's local storage. Nothing is sent to a server except when you generate a report (your entries are sent to the AI to write the summary) or when you send to Slack.</dd></div>
+      <div class="qrow"><dt>What happens if I clear my browser data?</dt><dd>Your entries would be deleted since they're stored locally. This is why we recommend installing to your Home Screen and not clearing app data. A future version may add cloud backup.</dd></div>
+      <div class="qrow"><dt>Can I use this on a laptop too?</dt><dd>Yes. Open the URL in any modern browser. Chrome and Edge on Mac/Windows let you install it as a desktop app too (look for the install icon in the address bar).</dd></div>
+      <div class="qrow"><dt>How do I start a new week?</dt><dd>Tap "Clear week" in the top right of the Log tab. Tap again to confirm. This clears all entries and the saved report so you can start fresh. Do this every Monday.</dd></div>
+      <div class="qrow"><dt>Can multiple people use this?</dt><dd>Yes — each person uses their own copy on their own device. Everyone's data is separate and private to their device. You all share the same app URL but not each other's data.</dd></div>
+      <div class="qrow"><dt>The voice feature isn't working — what do I do?</dt><dd>On iPhone, make sure you're using Safari (not Chrome). On Android, use Chrome. Check that microphone permission is allowed for the site in your browser settings.</dd></div>
+    </dl>
+  </section>
+
+  <footer>
+    Work Journal &nbsp;·&nbsp; v2.0 &nbsp;·&nbsp; Questions? Contact your team admin.
+  </footer>
+
+</div>
+</body>
+</html>

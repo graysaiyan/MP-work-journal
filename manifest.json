@@ -1,0 +1,18 @@
+{
+  "name": "Work Journal",
+  "short_name": "Journal",
+  "description": "Log your work daily. Generate your weekly Slack report in one tap.",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#ffffff",
+  "theme_color": "#111110",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'><rect width='192' height='192' rx='40' fill='%23111110'/><text x='96' y='130' font-size='100' text-anchor='middle' font-family='system-ui'>✏️</text></svg>",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
